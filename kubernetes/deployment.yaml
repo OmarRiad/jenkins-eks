@@ -18,7 +18,7 @@ spec:
         - name: aws-registry-key
       containers:
         - name: $APP_NAME
-          image: $DOCKER_REPO:$IMAGE_NAME
+          image: cdickersoncloudcoder/demo-app:$IMAGE_NAME
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
