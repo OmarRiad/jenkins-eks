@@ -11,7 +11,7 @@ pipeline {
                     sh '''
                     #!/bin/bash
                     mvn build-helper:parse-version versions:set \
-                        -DnewVersion=${parsedVersion.majorVersion}.${parsedVersion.minorVersion}.${parsedVersion.nextIncrementalVersion} \
+                        -DnewVersion=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout | sed 's/-SNAPSHOT//')-$(date +%Y%m%d%H%M%S) \
                         versions:commit
                     '''
                     def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
