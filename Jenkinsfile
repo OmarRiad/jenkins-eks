@@ -59,8 +59,10 @@ pipeline {
             steps {
                 script {
                     sshagent(['github-ssh-key']) {
+                        sh ' git config --global user.email "jenkins@mycompany.com"'
+                        sh 'git config user.name "Jenkins CI"'
                         sh 'git add .'
-                        sh 'git commit -m "ci: version bump"'
+                        sh 'git commit -m "ci: version bump"' || echo "No changes to commit"
                         sh 'git push origin HEAD:jenkins-jobs'
                     }
                 }
