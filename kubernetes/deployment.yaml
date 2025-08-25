@@ -15,7 +15,7 @@ spec:
         app: $APP_NAME
     spec:
       imagePullSecrets:
-        - name: aws-registry-key
+        - name: my-registry-key
       containers:
         - name: $APP_NAME
           image: $DOCKER_REPO:$IMAGE_NAME
