@@ -63,6 +63,7 @@ pipeline {
                         sh "git config user.name 'Jenkins'"
                         sh 'git add .'
                         sh 'git commit -m "ci: version bump" || echo "No changes to commit"'
+                        sh 'git remote set-url origin git@github.com:OmarRiad/jenkins-eks.git'
                         sh 'git push origin HEAD:jenkins-jobs'
                     }
                 }
